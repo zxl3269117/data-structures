@@ -5,6 +5,7 @@ var Queue = function() {
 };
 
 var queueMethods = {};
+
 queueMethods.enqueue = function(value) {
   this.storage[this.size()] = value;
 },

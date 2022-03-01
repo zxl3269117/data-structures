@@ -4,22 +4,22 @@ var Stack = function() {
   return someInstance;
 };
 
-var stackMethods = {
-  push: function(value) {
-    this.storage[this.size()] = value;
-  },
+var stackMethods = {};
 
-  pop: function() {
-    var lastItem = this.storage[this.size() - 1];
-    delete this.storage[this.size() - 1];
-    return lastItem;
-  },
+stackMethods.push = function(value) {
+  this.storage[this.size()] = value;
+};
 
-  size: function() {
-    var count = 0;
-    while (this.storage[count]) {
-      count ++;
-    }
-    return count;
+stackMethods.pop = function() {
+  var popped = this.storage[this.size() - 1];
+  delete this.storage[this.size() - 1];
+  return popped;
+};
+
+stackMethods.size = function() {
+  var count = 0;
+  while (this.storage[count]) {
+    count ++;
   }
+  return count;
 };

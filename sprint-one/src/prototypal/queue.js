@@ -4,28 +4,28 @@ var Queue = function() {
   return someInstance;
 };
 
-var queueMethods = {
-  enqueue: function(value) {
-    this.storage[this.size()] = value;
-  },
+var queueMethods = {};
 
-  dequeue: function() {
-    var index = 1;
-    var firstItem = this.storage[0];
-    var temp = {};
-    while (this.storage[index]) {
-      temp[index - 1] = this.storage[index];
-      index ++;
-    }
-    this.storage = temp;
-    return firstItem;
-  },
+queueMethods.enqueue = function(value) {
+  this.storage[this.size()] = value;
+},
 
-  size: function() {
-    var count = 0;
-    while (this.storage[count]) {
-      count ++;
-    }
-    return count;
+queueMethods.dequeue = function() {
+  var index = 1;
+  var temp = {};
+  var firstItem = this.storage[0];
+  while (this.storage[index]) {
+    temp[index - 1] = this.storage[index];
+    index ++;
   }
+  this.storage = temp;
+  return firstItem;
+};
+
+queueMethods.size = function() {
+  var count = 0;
+  while (this.storage[count]) {
+    count ++;
+  }
+  return count;
 };
