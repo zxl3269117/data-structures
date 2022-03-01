@@ -5,21 +5,39 @@ var Stack = function() {
 };
 
 var stackMethods = {
-  push: function(value) {
-    this.storage[this.size()] = value;
-  },
+  // push: function(value) {
+  //   this.storage[this.size()] = value;
+  // },
 
-  pop: function() {
-    var lastItem = this.storage[this.size() - 1];
-    delete this.storage[this.size() - 1];
-    return lastItem;
-  },
+  // pop: function() {
+  //   var lastItem = this.storage[this.size() - 1];
+  //   delete this.storage[this.size() - 1];
+  //   return lastItem;
+  // },
 
-  size: function() {
-    var count = 0;
-    while (this.storage[count]) {
-      count ++;
-    }
-    return count;
+  // size: function() {
+  //   var count = 0;
+  //   while (this.storage[count]) {
+  //     count ++;
+  //   }
+  //   return count;
+  // }
+};
+
+stackMethods.push = function(value) {
+  this.storage[this.size()] = value;
+};
+
+stackMethods.pop = function() {
+  var lastItem = this.storage[this.size() - 1];
+  delete this.storage[this.size() - 1];
+  return lastItem;
+};
+
+stackMethodssize = function() {
+  var count = 0;
+  while (this.storage[count]) {
+    count ++;
   }
+  return count;
 };
