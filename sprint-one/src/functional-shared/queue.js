@@ -4,7 +4,6 @@ var Queue = function() {
   return someInstance;
 };
 
-
 var queueMethods = {
   enqueue: function(value) {
     this.storage[this.size()] = value;
