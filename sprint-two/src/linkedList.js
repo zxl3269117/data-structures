@@ -57,6 +57,7 @@ var Node = function(value) {
 // .contains - O(n)
 
 
+
 // list = {
 //         head: {'value': value, 'next': {'value': value, 'next': {'value': value, 'next': null}}},
 //         tail: {'value': value, 'next': null}
