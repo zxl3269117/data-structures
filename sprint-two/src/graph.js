@@ -1,5 +1,3 @@
-
-
 // Instantiate a new graph
 var Graph = function() {
   this.vertices = [];
@@ -23,21 +21,11 @@ Graph.prototype.removeNode = function(node) {
   }
   for (var i = 0; i < this.vertices.length; i ++) {
     if (this.vertices[i] === node) {
-      item = this.vertices[0];
+      this.vertices[i] = this.vertices[0];
       this.vertices.shift();
     }
   }
-  // this.vertices.forEach(function(item) {
-  //   // check if current item is node
-  //   if (item === node) {
-  //     // assign this.verticese[0] to current item
-  //     item = this.vertices[0];
-  //     // shift(this.vertices)
-  //     this.vertices.shift();
-  //   }
-  // });
 
-  // remove the edges
   if (this.hasEdge(node, node)) {
     this.removeEdge(node, node);
   }
@@ -64,12 +52,12 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
   if (this.edges[0].includes(fromNode) && this.edges[0].includes(toNode)) {
     this.edges.shift();
   }
-  this.edges.forEach(function (item) {
-    if (item.includes(fromNode) && item.includes(toNode)) {
-      item = this.edges[0];
+  for (var i = 0; i < this.edges.length; i++) {
+    if (this.edges[i].includes(fromNode) && this.edges[i].includes(toNode)) {
+      this.edges[i] = this.edges[0];
       this.edges.shift();
     }
-  });
+  }
 };
 
 // Pass in a callback which will be executed on each node of the graph.
@@ -82,6 +70,13 @@ Graph.prototype.forEachNode = function(cb) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+// addNote: O(1)
+// contains: O(n)
+// removeNode: O(n)
+// hasEdges: O(n)
+// addEdges: O(1)
+// removeEdges: O(n)
+// forEachNode: O(n)
 
 // target is [6, 3]
 // edges = [[1, 2], [3, 4], [6, 3], [7, 1]]
