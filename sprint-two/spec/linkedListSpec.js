@@ -52,4 +52,8 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  // when linkedlist is empty, contains method should return false
+  it('should return false when calling contains on an empty linkedList', function() {
+    expect(linkedList.contains(4)).to.equal(false);
+  });
 });

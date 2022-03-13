@@ -7,7 +7,12 @@ var Set = function() {
 var setPrototype = {};
 
 setPrototype.add = function(item) {
-  this._storage[item] = true;
+  if (typeof item === 'string') {
+    this._storage[item] = true;
+  } else {
+    console.log('Please enter a string as input.');
+  }
+
 };
 
 setPrototype.contains = function(item) {

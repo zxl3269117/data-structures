@@ -43,15 +43,17 @@ HashTable.prototype.retrieve = function(k) {
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var basket = this._storage.get(index);
+  var result = false;
   if (basket) {
     for (var i = 0; i < basket.length; i++) {
       if (basket[i][0] === k) {
         basket.splice(i, 1);
+        result = true;
       }
     }
   }
+  return result;
 };
-
 
 
 /* Complexity: What is the time complexity of the above functions?

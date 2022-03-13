@@ -16,13 +16,9 @@ Graph.prototype.contains = function(node) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  if (this.vertices[0] === node) {
-    this.vertices.shift();
-  }
-  for (var i = 0; i < this.vertices.length; i ++) {
+  for (var i = 0; i < this.vertices.length; i++) {
     if (this.vertices[i] === node) {
-      this.vertices[i] = this.vertices[0];
-      this.vertices.shift();
+      this.vertices.splice(i, 1);
     }
   }
 
@@ -44,18 +40,21 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
+  if (!this.contains(fromNode)) {
+    this.addNode(fromNode);
+  }
+  if (!this.contains(toNode)) {
+    this.addNode(toNode);
+  }
+
   this.edges.push([fromNode, toNode]);
 };
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
-  if (this.edges[0].includes(fromNode) && this.edges[0].includes(toNode)) {
-    this.edges.shift();
-  }
   for (var i = 0; i < this.edges.length; i++) {
     if (this.edges[i].includes(fromNode) && this.edges[i].includes(toNode)) {
-      this.edges[i] = this.edges[0];
-      this.edges.shift();
+      this.edges.splice(i, 1);
     }
   }
 };

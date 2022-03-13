@@ -27,12 +27,14 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    var pointer = list.head.next;
-    while (pointer) {
-      if (pointer.value === target) {
-        return true;
+    if (list.head) {
+      var pointer = list.head.next;
+      while (pointer) {
+        if (pointer.value === target) {
+          return true;
+        }
+        pointer = pointer.next;
       }
-      pointer = pointer.next;
     }
     return false;
   };

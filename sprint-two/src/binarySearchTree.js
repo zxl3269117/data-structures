@@ -1,23 +1,23 @@
 var BinarySearchTree = function(value) {
   var node = {};
-  node.left = null;
-  node.right = null;
-  node.value = value;
+  node._left = null;
+  node._right = null;
+  node._value = value;
 
   // accept a value and place it in the correct position in the tree
   node.insert = function(value) {
     var checkNode = function(node) {
-      if (node.value > value) {
-        if (!node.left) {
-          node.left = BinarySearchTree(value);
+      if (node._value > value) {
+        if (!node._left) {
+          node._left = BinarySearchTree(value);
         } else {
-          checkNode(node.left);
+          checkNode(node._left);
         }
-      } else if (node.value < value) {
-        if (!node.right) {
-          node.right = BinarySearchTree(value);
+      } else if (node._value < value) {
+        if (!node._right) {
+          node._right = BinarySearchTree(value);
         } else {
-          checkNode(node.right);
+          checkNode(node._right);
         }
       }
     };
@@ -27,17 +27,17 @@ var BinarySearchTree = function(value) {
   // accepts a value and find if the value is contained in the tree
   node.contains = function(value) {
     var traverseNode = function(node) {
+
       if (!node) {
         return false;
-      }
-      if (node.value === value) {
+      } else if (node._value === value) {
         return true;
-      }
-      if (value > node.value) {
-        return traverseNode(node.right);
-      }
-      if (value < node.value) {
-        return traverseNode(node.left);
+      } else if (value > node._value) {
+        return traverseNode(node._right);
+      } else if (value < node._value) {
+        return traverseNode(node._left);
+      } else {
+        return false;
       }
     };
     return traverseNode(node);
@@ -47,12 +47,12 @@ var BinarySearchTree = function(value) {
   node.depthFirstLog = function(cb) {
     var changeNode = function(node) {
       if (node) {
-        cb(node.value);
-        if (node.left) {
-          changeNode(node.left);
+        cb(node._value);
+        if (node._left) {
+          changeNode(node._left);
         }
-        if (node.right) {
-          changeNode(node.right);
+        if (node._right) {
+          changeNode(node._right);
         }
       }
     };

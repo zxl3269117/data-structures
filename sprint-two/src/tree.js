@@ -9,8 +9,10 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  var node = Tree(value);
-  this.children.push(node);
+  if (value !== undefined) {
+    var node = Tree(value);
+    this.children.push(node);
+  }
 };
 
 treeMethods.contains = function(target) {
@@ -46,14 +48,15 @@ addChild - O(1)
 contains - O(n^2)
  */
 
-// var newTree = {
-  // value: 1,
-  // children: [{
-    // value: 2,
-    // children: [{
-      // value: 3,
-      // children: []
-    //}]
-  //}]
-//}
+/* var newTree = {
+  value: 1,
+  children: [{
+    value: 2,
+    children: [{
+      value: 3,
+       children: []
+      }]
+    }]
+  }
+*/
 
